@@ -1,0 +1,8 @@
+/workspaces/GUIA-7/GUIA 7/src/main/java/com/umb/taller/Main.java
+/workspaces/GUIA-7/GUIA 7/src/main/java/com/umb/taller/domain/ApiMetric.java
+/workspaces/GUIA-7/GUIA 7/src/main/java/com/umb/taller/domain/CircuitBreakerOpenException.java
+/workspaces/GUIA-7/GUIA 7/src/main/java/com/umb/taller/infrastructure/adapter/ColombiaDataGovAdapter.java
+/workspaces/GUIA-7/GUIA 7/src/main/java/com/umb/taller/infrastructure/adapter/DaneDataAdapter.java
+/workspaces/GUIA-7/GUIA 7/src/main/java/com/umb/taller/infrastructure/db/DatabaseManager.java
+/workspaces/GUIA-7/GUIA 7/src/main/java/com/umb/taller/infrastructure/resilience/CircuitBreaker.java
+/workspaces/GUIA-7/GUIA 7/src/main/java/com/umb/taller/infrastructure/resilience/RetryHelper.java
