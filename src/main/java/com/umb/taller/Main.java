@@ -5,6 +5,7 @@ import com.umb.taller.infrastructure.adapter.DaneDataAdapter;
 import com.umb.taller.infrastructure.db.DatabaseManager;
 import com.umb.taller.infrastructure.resilience.CircuitBreaker;
 import com.umb.taller.infrastructure.security.SecurityService;
+import com.umb.taller.infrastructure.web.WebServer;
 import java.net.http.HttpClient;
 
 public class Main {
@@ -46,15 +47,12 @@ public class Main {
         SecurityService securityService = new SecurityService();
         
         try {
-            // Test Login ADMIN
             String adminToken = securityService.authenticate("admin_evaldoc", "Admin123*");
             System.out.println("[AUTH SUCCESS] Token generado para ADMIN: " + adminToken.substring(0, Math.min(adminToken.length(), 30)) + "...");
 
-            // Test RBAC Authorization
             boolean canAccessAdminPanel = securityService.authorize(adminToken, "ADMIN");
             System.out.println("[RBAC AUTHORIZATION] ¿Acceso de ADMIN a panel directivo?: " + canAccessAdminPanel);
 
-            // Test Login USER
             String userToken = securityService.authenticate("user_docente", "Docente2026*");
             boolean userTriesAdmin = securityService.authorize(userToken, "ADMIN");
             System.out.println("[RBAC AUTHORIZATION] ¿Acceso de USER a panel directivo (Debe ser falso)?: " + userTriesAdmin);
@@ -62,5 +60,9 @@ public class Main {
         } catch (Exception e) {
             System.err.println("[SECURITY ERROR]: " + e.getMessage());
         }
+
+        // 6. Levantar Servidor Web y API REST en http://localhost:7000
+        int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "7000"));
+WebServer.startServer(port);
     }
 }
